@@ -20,6 +20,13 @@ List<ItemModel> projects = [
         'The NHCI dashboard is designed to help nhci employes every project complies with the Saudi Building Code and receives the technical attention needed for high-quality inspection and compliance workflows.',
   ),
   ItemModel(
+    name: 'Visit App – Desktop App — 2026',
+    url: '',
+    image: 'programming',
+    description:
+        'This app design for client to visit office and registration any visits for building with any inspection engineer -Production',
+  ),
+  ItemModel(
     name: 'EUA Client',
     url: 'https://play.google.com/store/apps/details?id=com.rdapp.EUA&hl=en',
     image: 'assets/images/eslam/eua.webp',
