@@ -9,11 +9,11 @@ class AppColors {
   static const surface = Color(0xff11100F);
   static const surfaceElevated = Color(0xff181614);
   static const border = Color(0xff34302A);
-  // Developer purple inspired by code editors, terminals, and backend tools.
-  static const accent = Color(0xffA855F7);
-  static const accentSoft = Color(0xff2E1065);
-  static const lightAccent = Color(0xff7C3AED);
-  static const lightAccentSoft = Color(0xffEDE9FE);
+  // Developer blue inspired by code editors, terminals, and backend tools.
+  static const accent = Color(0xff00A8FF);
+  static const accentSoft = Color(0xff082B48);
+  static const lightAccent = Color(0xff0284C7);
+  static const lightAccentSoft = Color(0xffE0F2FE);
   static const lightBackground = Color(0xffFBF9F5);
   static const lightSurface = Color(0xffFFFFFF);
   static const lightText = Color(0xff171412);

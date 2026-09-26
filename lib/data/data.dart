@@ -15,7 +15,7 @@ List<ItemModel> projects = [
   ItemModel(
     name: 'NHCI Dashboard',
     url: 'https://nhci.rdapp.net/login',
-    image: 'assets/images/eslam/dash.jpeg',
+    image: 'programming',
     description:
         'The NHCI dashboard is designed to help nhci employes every project complies with the Saudi Building Code and receives the technical attention needed for high-quality inspection and compliance workflows.',
   ),
