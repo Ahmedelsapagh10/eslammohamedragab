@@ -281,17 +281,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                   ),
                                 ),
-                                _SectionGap.large(),
-                                JourneyReveal(
-                                  controller: _scrollController,
-                                  child: _CoursesSection(
-                                      key: _coursesKey, colors: colors),
-                                ),
-                                _SectionGap.large(),
-                                JourneyReveal(
-                                  controller: _scrollController,
-                                  child: _PackageSection(colors: colors),
-                                ),
+                                if (courses.isNotEmpty) ...[
+                                  _SectionGap.large(),
+                                  JourneyReveal(
+                                    controller: _scrollController,
+                                    child: _CoursesSection(
+                                        key: _coursesKey, colors: colors),
+                                  ),
+                                ],
+                                if (packages.isNotEmpty) ...[
+                                  _SectionGap.large(),
+                                  JourneyReveal(
+                                    controller: _scrollController,
+                                    child: _PackageSection(colors: colors),
+                                  ),
+                                ],
                                 _SectionGap.large(),
                                 JourneyReveal(
                                   controller: _scrollController,
@@ -412,7 +416,7 @@ class _HeroSectionState extends State<_HeroSection>
         _boot(
             _Eyebrow(
               colors: colors,
-              label: 'Available for high-impact Flutter roles',
+              label: 'Available for high-impact backend roles',
               icon: Icons.terminal_rounded,
             ),
             0),
@@ -431,7 +435,7 @@ class _HeroSectionState extends State<_HeroSection>
         const SizedBox(height: 8),
         _boot(
             Text(
-              'Ahmed Mohamed Elsapagh',
+              'Eslam Mohamed Ragab',
               style: TextStyle(
                 color: colors.text,
                 fontFamily: 'Nunito-ExtraBold',
@@ -446,9 +450,9 @@ class _HeroSectionState extends State<_HeroSection>
         const SizedBox(height: 20),
         _boot(
             Text(
-              'I build reliable mobile and web products that turn complex '
-              'workflows into simple, polished experiences. From architecture '
-              'to launch, I help teams ship Flutter products that perform at scale.',
+              'I build scalable web applications and high-performance APIs '
+              'with PHP, Laravel, MySQL, and RESTful architecture. From system '
+              'design to delivery, I help teams ship maintainable backend products.',
               style: TextStyle(
                 color: colors.muted,
                 fontSize: width >= 620 ? 17 : 15,
@@ -466,12 +470,12 @@ class _HeroSectionState extends State<_HeroSection>
               _HeroProofChip(
                 colors: colors,
                 icon: Icons.rocket_launch_outlined,
-                label: '${projects.length}+ shipped apps',
+                label: '30+ delivered projects',
               ),
               _HeroProofChip(
                 colors: colors,
                 icon: Icons.groups_2_outlined,
-                label: '100k+ users served',
+                label: '5.5+ years experience',
               ),
               _HeroProofChip(
                 colors: colors,
@@ -490,11 +494,11 @@ class _HeroSectionState extends State<_HeroSection>
               children: [
                 _ActionButton(
                   colors: colors,
-                  label: 'Download resume',
-                  icon: Icons.download_rounded,
+                  label: 'View LinkedIn',
+                  icon: Icons.badge_rounded,
                   filled: true,
                   onTap: () => Launcher.open(
-                    'https://drive.google.com/file/d/1rt3W91zTQoh2jZe2iZKdk2yj601M79FB/view?usp=sharing',
+                    'https://www.linkedin.com/in/eslam-mohamed-ragab-81332528b/',
                   ),
                 ),
                 _ActionButton(
@@ -502,7 +506,7 @@ class _HeroSectionState extends State<_HeroSection>
                   label: 'View GitHub',
                   icon: Icons.open_in_new_rounded,
                   onTap: () =>
-                      Launcher.open('https://github.com/Ahmedelsapagh10'),
+                      Launcher.open('https://github.com/eslamandroid12345'),
                 ),
               ],
             ),
@@ -687,7 +691,7 @@ class _DeveloperConsole extends StatelessWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'ahmed@portfolio:~',
+                    'eslam@portfolio:~',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: colors.muted,
@@ -711,9 +715,9 @@ class _DeveloperConsole extends StatelessWidget {
                   colors: colors,
                   title: 'cat ./profile/summary.txt',
                   lines: const [
-                    'Senior Flutter Developer',
-                    'Clean Architecture, Cubit, Firebase, APIs, Maps',
-                    'Building mobile, web, and production-ready products',
+                    'Senior Back-End Developer',
+                    'PHP, Laravel, MySQL, RESTful APIs',
+                    'Building scalable web systems and backend products',
                   ],
                 ),
                 SizedBox(height: compact ? 12 : 16),
@@ -723,15 +727,15 @@ class _DeveloperConsole extends StatelessWidget {
                       child: _MiniMetric(
                         colors: colors,
                         label: 'Experience',
-                        value: '4+',
+                        value: '5.5+',
                       ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
                       child: _MiniMetric(
                         colors: colors,
-                        label: 'Apps',
-                        value: '${projects.length}+',
+                        label: 'Projects',
+                        value: '30+',
                       ),
                     ),
                   ],
@@ -799,7 +803,7 @@ class _ProfileVisual extends StatelessWidget {
               ),
               child: ClipRRect(
                 child: CustomImage(
-                  image: 'assets/images/me3.jpg',
+                  image: 'assets/images/my.jpeg',
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter,
                 ),
@@ -821,7 +825,7 @@ class _ProfileVisual extends StatelessWidget {
                 border: Border.all(color: colors.border),
               ),
               child: Text(
-                'FLUTTER · DART',
+                'PHP · LARAVEL',
                 style: TextStyle(
                   color: colors.accent,
                   fontFamily: 'Barlow',
@@ -847,23 +851,23 @@ class _MetricsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metrics = [
-      _MetricData(
-        value: '4+',
-        label: 'Years in Flutter',
-        hint: 'Production apps, teams, teaching, and delivery.',
+      const _MetricData(
+        value: '5.5+',
+        label: 'Years in backend',
+        hint: 'Scalable systems, APIs, architecture, and delivery.',
         icon: Icons.work_outline_rounded,
       ),
-      _MetricData(
-        value: '${projects.length}+',
-        label: 'Projects shipped',
-        hint: 'Mobile, web, dashboards, education, and utilities.',
-        icon: Icons.apps_rounded,
+      const _MetricData(
+        value: '30+',
+        label: 'Projects delivered',
+        hint: 'Complex projects shipped on time and within budget.',
+        icon: Icons.account_tree_rounded,
       ),
       const _MetricData(
-        value: '100k+',
-        label: 'Users served',
-        hint: 'Freelance and product apps with real usage.',
-        icon: Icons.groups_rounded,
+        value: 'API',
+        label: 'Backend focus',
+        hint: 'PHP, Laravel, MySQL, and RESTful API development.',
+        icon: Icons.api_rounded,
       ),
     ];
 
@@ -913,9 +917,9 @@ class _ProjectsSection extends StatelessWidget {
           _SectionHeader(
             colors: colors,
             eyebrow: 'Selected builds',
-            title: 'Projects with real product weight',
+            title: 'Backend and product portfolio',
             body:
-                'Mobile apps, web products, packages, and learning projects from your actual portfolio data.',
+                'Projects from Eslam\'s live portfolio, including dashboards, APIs, marketplaces, education systems, ERP tools, and mobile-backed platforms.',
           ),
           const SizedBox(height: 26),
           LayoutBuilder(
@@ -1099,7 +1103,7 @@ class _SkillsSection extends StatelessWidget {
             eyebrow: 'Stack map',
             title: 'Tools you ship with',
             body:
-                'Grouped by architecture, Flutter, leadership, backend, deployment, and collaboration.',
+                'Grouped by backend architecture, APIs, database work, leadership, deployment, and collaboration.',
           ),
           const SizedBox(height: 24),
           for (var i = 0; i < entries.length; i++)
@@ -1125,14 +1129,6 @@ class _ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mailTo = Uri(
-      scheme: 'mailto',
-      path: 'ahmedelsapagh10@gmail.com',
-      queryParameters: const {
-        'subject': 'Hello Ahmed',
-      },
-    ).toString();
-
     return _SectionShell(
       colors: colors,
       child: Column(
@@ -1142,8 +1138,7 @@ class _ContactSection extends StatelessWidget {
             colors: colors,
             eyebrow: 'Open channels',
             title: "Let's build something solid",
-            body:
-                'Fastest path: email, WhatsApp, LinkedIn, GitHub, or YouTube.',
+            body: 'Confirmed public channels from Eslam\'s portfolio metadata.',
           ),
           const SizedBox(height: 26),
           Wrap(
@@ -1152,17 +1147,11 @@ class _ContactSection extends StatelessWidget {
             children: [
               _ActionButton(
                 colors: colors,
-                label: 'Email',
-                icon: Icons.forward_to_inbox_rounded,
-                filled: true,
-                onTap: () => Launcher.open(mailTo),
-              ),
-              _ActionButton(
-                colors: colors,
                 label: 'LinkedIn',
                 icon: Icons.badge_rounded,
+                filled: true,
                 onTap: () => Launcher.open(
-                  'https://www.linkedin.com/in/ahmedelsapagh/',
+                  'https://www.linkedin.com/in/eslam-mohamed-ragab-81332528b/',
                 ),
               ),
               _ActionButton(
@@ -1170,22 +1159,14 @@ class _ContactSection extends StatelessWidget {
                 label: 'GitHub',
                 icon: Icons.terminal_rounded,
                 onTap: () =>
-                    Launcher.open('https://github.com/Ahmedelsapagh10'),
+                    Launcher.open('https://github.com/eslamandroid12345'),
               ),
               _ActionButton(
                 colors: colors,
-                label: 'WhatsApp',
-                icon: Icons.forum_rounded,
+                label: 'Portfolio',
+                icon: Icons.language_rounded,
                 onTap: () => Launcher.open(
-                  'https://api.whatsapp.com/send/?phone=201201709414&text&app_absent=0',
-                ),
-              ),
-              _ActionButton(
-                colors: colors,
-                label: 'YouTube',
-                icon: Icons.smart_display_rounded,
-                onTap: () => Launcher.open(
-                  'https://www.youtube.com/channel/UCgEj5nlK8_5MrADHCzqOMUA?sub_confirmation=1',
+                  'https://eslam-mohamed-ragab.techno-saas.com/',
                 ),
               ),
             ],
@@ -1198,7 +1179,7 @@ class _ContactSection extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Text(
-                '© ${DateTime.now().year} Ahmed Elsapagh. All rights reserved.',
+                '© ${DateTime.now().year} Eslam Mohamed Ragab. All rights reserved.',
                 style: TextStyle(
                   color: colors.muted,
                   fontSize: 13,
@@ -1467,9 +1448,9 @@ class _PackageFeature extends StatelessWidget {
           spacing: 8,
           runSpacing: 8,
           children: [
-            _TinyChip(colors: colors, label: 'Flutter'),
-            _TinyChip(colors: colors, label: 'WhatsApp API'),
-            _TinyChip(colors: colors, label: 'SDK'),
+            _TinyChip(colors: colors, label: 'Laravel'),
+            _TinyChip(colors: colors, label: 'REST API'),
+            _TinyChip(colors: colors, label: 'MySQL'),
           ],
         ),
         const SizedBox(height: 14),
@@ -1725,7 +1706,7 @@ class _TerminalWindowBar extends StatelessWidget {
           const SizedBox(width: 18),
           Expanded(
             child: Text(
-              'ahmed@portfolio:~ \$ $command',
+              'eslam@portfolio:~ \$ $command',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
@@ -1979,14 +1960,14 @@ class _SkillRow extends StatelessWidget {
     switch (category) {
       case 'Architecture & Design':
         return Icons.architecture_rounded;
-      case 'Flutter & Dart':
-        return Icons.flutter_dash;
-      case 'State Management':
-        return Icons.hub_rounded;
+      case 'Backend Development':
+        return Icons.dns_rounded;
+      case 'Database':
+        return Icons.storage_rounded;
       case 'Leadership':
         return Icons.groups_rounded;
-      case 'Backend & Cloud':
-        return Icons.cloud_queue_rounded;
+      case 'Web & APIs':
+        return Icons.api_rounded;
       case 'Deployment':
         return Icons.rocket_launch_rounded;
       case 'Tools & Others':
@@ -2419,7 +2400,7 @@ class _RoleLine extends StatelessWidget {
           ),
         ),
         Text(
-          '"Senior Flutter Developer"',
+          '"Senior Back-End Developer"',
           style: TextStyle(
             color: colors.text,
             fontFamily: 'Barlow',
@@ -2664,7 +2645,7 @@ class _NavHeaderDelegate extends SliverPersistentHeaderDelegate {
                                       text: '~/',
                                       style: TextStyle(color: colors.accent),
                                     ),
-                                    const TextSpan(text: 'elsapagh'),
+                                    const TextSpan(text: 'eslam'),
                                   ],
                                 ),
                                 style: TextStyle(
@@ -2692,11 +2673,12 @@ class _NavHeaderDelegate extends SliverPersistentHeaderDelegate {
                                           label: '~/Projects',
                                           active: activeSection == 'projects',
                                           onTap: onProjectsTap),
-                                      _NavLink(
-                                          colors: colors,
-                                          label: '~/Courses',
-                                          active: activeSection == 'courses',
-                                          onTap: onCoursesTap),
+                                      if (courses.isNotEmpty)
+                                        _NavLink(
+                                            colors: colors,
+                                            label: '~/Courses',
+                                            active: activeSection == 'courses',
+                                            onTap: onCoursesTap),
                                       _NavLink(
                                           colors: colors,
                                           label: '~/Experience',
@@ -3012,7 +2994,6 @@ class _CommandPaletteState extends State<_CommandPalette> {
       for (final section in const [
         'about',
         'projects',
-        'courses',
         'experience',
         'skills',
         'contact'
@@ -3032,26 +3013,25 @@ class _CommandPaletteState extends State<_CommandPalette> {
         icon: Icons.code_rounded,
         action: () {
           Navigator.of(context).pop();
-          Launcher.open('https://github.com/Ahmedelsapagh10');
+          Launcher.open('https://github.com/eslamandroid12345');
         },
       ),
       (
-        label: 'Download résumé',
-        icon: Icons.download_rounded,
+        label: 'Open LinkedIn',
+        icon: Icons.badge_rounded,
         action: () {
           Navigator.of(context).pop();
           Launcher.open(
-            'https://drive.google.com/file/d/1rt3W91zTQoh2jZe2iZKdk2yj601M79FB/view?usp=sharing',
+            'https://www.linkedin.com/in/eslam-mohamed-ragab-81332528b/',
           );
         },
       ),
       (
-        label: 'Start an email',
-        icon: Icons.mail_outline_rounded,
+        label: 'Open portfolio',
+        icon: Icons.language_rounded,
         action: () {
           Navigator.of(context).pop();
-          Launcher.open(
-              'mailto:ahmedelsapagh10@gmail.com?subject=Hello%20Ahmed');
+          Launcher.open('https://eslam-mohamed-ragab.techno-saas.com/');
         },
       ),
     ];
@@ -3156,8 +3136,9 @@ class _MobileDrawer extends StatelessWidget {
             _DrawerLink(label: '~/About', onTap: onAboutTap, colors: colors),
             _DrawerLink(
                 label: '~/Projects', onTap: onProjectsTap, colors: colors),
-            _DrawerLink(
-                label: '~/Courses', onTap: onCoursesTap, colors: colors),
+            if (courses.isNotEmpty)
+              _DrawerLink(
+                  label: '~/Courses', onTap: onCoursesTap, colors: colors),
             _DrawerLink(
                 label: '~/Experience', onTap: onExperienceTap, colors: colors),
             _DrawerLink(label: '~/Skills', onTap: onSkillsTap, colors: colors),

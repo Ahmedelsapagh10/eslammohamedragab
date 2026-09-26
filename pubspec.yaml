@@ -50,18 +50,18 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/me3.jpg"
+  image_path: "assets/images/my.jpeg"
   web:
     generate: true
-    image_path: "assets/images/me3.jpg"
+    image_path: "assets/images/my.jpeg"
     background_color: "#1E1E1E"
     theme_color: "#1E1E1E"
   macos:
     generate: true
-    image_path: "assets/images/me3.jpg"
+    image_path: "assets/images/my.jpeg"
   windows:
     generate: true
-    image_path: "assets/images/me3.jpg"
+    image_path: "assets/images/my.jpeg"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

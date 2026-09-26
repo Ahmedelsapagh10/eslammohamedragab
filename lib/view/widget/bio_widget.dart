@@ -196,7 +196,7 @@ class _BioWidgetState extends State<BioWidget>
                             top: isMobile ? 18 : 0,
                           ),
                           child: HexagonProfile(
-                            imagePath: 'assets/images/me3.jpg',
+                            imagePath: 'assets/images/my.jpeg',
                             size: avatarSize,
                             sides: 42,
                             fit: BoxFit.cover,

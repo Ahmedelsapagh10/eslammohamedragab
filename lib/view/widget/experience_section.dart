@@ -296,7 +296,7 @@ class _ExperienceCardState extends State<_ExperienceCard> {
                   onPressed: () {
                     if (link == 'Youtube') {
                       Launcher.open(
-                          'https://www.youtube.com/channel/UCgEj5nlK8_5MrADHCzqOMUA?sub_confirmation=1');
+                          'https://eslam-mohamed-ragab.techno-saas.com/');
                     } else if (link == 'GDSC') {
                       Launcher.open('https://gdsc.community.dev/');
                     }

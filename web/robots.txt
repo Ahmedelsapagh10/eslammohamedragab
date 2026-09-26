@@ -1,8 +1,8 @@
-# Robots.txt for Ahmed Elsapagh Portfolio
+# Robots.txt for Eslam Mohamed Ragab Portfolio
 # Allow all search engine crawlers to crawl the portfolio website
 
 User-agent: *
 Allow: /
 
 # Direct links to sitemap
-Sitemap: https://elsapagh.octopusteam.net/sitemap.xml
+Sitemap: https://eslam-mohamed-ragab.techno-saas.com/sitemap.xml

@@ -1,14 +1,18 @@
 {
-    "name": "Ahmed Elsapagh | Senior Flutter Developer",
-    "short_name": "Ahmed Elsapagh",
+    "name": "Eslam Mohamed Ragab | Senior Back-End Developer",
+    "short_name": "Eslam Ragab",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#1E1E1E",
     "theme_color": "#1E1E1E",
-    "description": "Portfolio of Ahmed Elsapagh (احمد الصباغ), a Senior Flutter Developer specialized in Clean Architecture, Cubit, and Cross-Platform Apps.",
+    "description": "Portfolio of Eslam Mohamed Ragab, a Senior Back-End Developer specialized in Laravel, APIs, and scalable web systems.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
-    "categories": ["portfolio", "developer", "business"],
+    "categories": [
+        "portfolio",
+        "developer",
+        "business"
+    ],
     "icons": [
         {
             "src": "icons/Icon-192.png",
