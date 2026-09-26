@@ -19,6 +19,26 @@ class CustomImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (image == 'programming') {
+      final theme = Theme.of(context);
+      return Container(
+        width: width,
+        height: height,
+        color: theme.colorScheme.surface,
+        alignment: Alignment.center,
+        child: Text(
+          '<Programming>',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: theme.colorScheme.primary,
+            fontFamily: 'Barlow',
+            fontSize: 22,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      );
+    }
+
     if (image.isEmpty) {
       return Container(
         width: width,

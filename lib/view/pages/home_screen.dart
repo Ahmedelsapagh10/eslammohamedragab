@@ -192,6 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final colors = _PortfolioColors.from(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return KeyboardListener(
       focusNode: _keyboardFocus,
@@ -228,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       pinned: true,
                       delegate: _NavHeaderDelegate(
                         colors: colors,
-                        isDark: widget.themeMode == ThemeMode.dark,
+                        isDark: isDark,
                         onThemeToggle: widget.onThemeToggle,
                         onLogoTap: _goHome,
                         onAboutTap: () => _goToSection('about'),
@@ -1250,7 +1251,8 @@ class _ProjectCaseCardState extends State<_ProjectCaseCard> {
                       scale: _hovered ? 1.045 : 1,
                       duration: const Duration(milliseconds: 420),
                       curve: Curves.easeOutCubic,
-                      child: CustomImage(
+                      child: _ProjectImage(
+                        colors: widget.colors,
                         image: widget.item.image,
                         fit: BoxFit.cover,
                         alignment: Alignment.topCenter,
@@ -1326,6 +1328,49 @@ class _ProjectCaseCardState extends State<_ProjectCaseCard> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _ProjectImage extends StatelessWidget {
+  const _ProjectImage({
+    required this.colors,
+    required this.image,
+    this.fit,
+    this.alignment = Alignment.center,
+  });
+
+  static const _programmingPlaceholder = 'programming';
+
+  final _PortfolioColors colors;
+  final String image;
+  final BoxFit? fit;
+  final AlignmentGeometry alignment;
+
+  @override
+  Widget build(BuildContext context) {
+    if (image == _programmingPlaceholder) {
+      return ColoredBox(
+        color: colors.surfaceSoft,
+        child: Center(
+          child: Text(
+            '<Programming>',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: colors.accent,
+              fontFamily: 'Barlow',
+              fontSize: 24,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ),
+      );
+    }
+
+    return CustomImage(
+      image: image,
+      fit: fit,
+      alignment: alignment,
     );
   }
 }

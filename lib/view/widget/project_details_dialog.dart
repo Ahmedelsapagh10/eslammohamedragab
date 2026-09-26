@@ -162,12 +162,7 @@ class _ImagePanel extends StatelessWidget {
         border: Border.all(color: colors.border),
       ),
       child: screenshots.isEmpty
-          ? CustomImage(
-              image: model.image,
-              width: double.infinity,
-              fit: BoxFit.fitWidth,
-              alignment: Alignment.topCenter,
-            )
+          ? _DialogProjectImage(colors: colors, image: model.image)
           : AspectRatio(
               aspectRatio: 4 / 3,
               child: PageView.builder(
@@ -182,6 +177,49 @@ class _ImagePanel extends StatelessWidget {
                 },
               ),
             ),
+    );
+  }
+}
+
+class _DialogProjectImage extends StatelessWidget {
+  const _DialogProjectImage({
+    required this.colors,
+    required this.image,
+  });
+
+  static const _programmingPlaceholder = 'programming';
+
+  final _DialogColors colors;
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    if (image == _programmingPlaceholder) {
+      return AspectRatio(
+        aspectRatio: 16 / 10,
+        child: ColoredBox(
+          color: colors.surfaceSoft,
+          child: Center(
+            child: Text(
+              '<Programming>',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: colors.accent,
+                fontFamily: 'Barlow',
+                fontSize: 26,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    return CustomImage(
+      image: image,
+      width: double.infinity,
+      fit: BoxFit.fitWidth,
+      alignment: Alignment.topCenter,
     );
   }
 }
