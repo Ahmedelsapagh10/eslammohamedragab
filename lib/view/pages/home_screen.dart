@@ -476,7 +476,7 @@ class _HeroSectionState extends State<_HeroSection>
               _HeroProofChip(
                 colors: colors,
                 icon: Icons.groups_2_outlined,
-                label: '5.5+ years experience',
+                label: '6 years experience',
               ),
               _HeroProofChip(
                 colors: colors,
@@ -495,9 +495,21 @@ class _HeroSectionState extends State<_HeroSection>
               children: [
                 _ActionButton(
                   colors: colors,
+                  label: 'Download CV',
+                  icon: Icons.download_rounded,
+                  filled: true,
+                  onTap: () => Launcher.open(Content.cvUrl),
+                ),
+                _ActionButton(
+                  colors: colors,
+                  label: 'WhatsApp',
+                  iconBuilder: (color) => _WhatsAppIcon(color: color),
+                  onTap: () => Launcher.open(Content.whatsappUrl),
+                ),
+                _ActionButton(
+                  colors: colors,
                   label: 'View LinkedIn',
                   icon: Icons.badge_rounded,
-                  filled: true,
                   onTap: () => Launcher.open(
                     'https://www.linkedin.com/in/eslam-mohamed-ragab-81332528b/',
                   ),
@@ -716,7 +728,7 @@ class _DeveloperConsole extends StatelessWidget {
                   colors: colors,
                   title: 'cat ./profile/summary.txt',
                   lines: const [
-                    'Senior Back-End Developer',
+                    'Senior Back-End Developer & Team Leader',
                     'PHP, Laravel, MySQL, RESTful APIs',
                     'Building scalable web systems and backend products',
                   ],
@@ -728,7 +740,7 @@ class _DeveloperConsole extends StatelessWidget {
                       child: _MiniMetric(
                         colors: colors,
                         label: 'Experience',
-                        value: '5.5+',
+                        value: '6',
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -853,7 +865,7 @@ class _MetricsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final metrics = [
       const _MetricData(
-        value: '5.5+',
+        value: '6',
         label: 'Years in backend',
         hint: 'Scalable systems, APIs, architecture, and delivery.',
         icon: Icons.work_outline_rounded,
@@ -1148,9 +1160,21 @@ class _ContactSection extends StatelessWidget {
             children: [
               _ActionButton(
                 colors: colors,
+                label: 'WhatsApp',
+                iconBuilder: (color) => _WhatsAppIcon(color: color),
+                onTap: () => Launcher.open(Content.whatsappUrl),
+              ),
+              _ActionButton(
+                colors: colors,
+                label: 'Download CV',
+                icon: Icons.download_rounded,
+                filled: true,
+                onTap: () => Launcher.open(Content.cvUrl),
+              ),
+              _ActionButton(
+                colors: colors,
                 label: 'LinkedIn',
                 icon: Icons.badge_rounded,
-                filled: true,
                 onTap: () => Launcher.open(
                   'https://www.linkedin.com/in/eslam-mohamed-ragab-81332528b/',
                 ),
@@ -1792,6 +1816,7 @@ class _TerminalLogItem extends StatelessWidget {
     final date = data['date'] ?? '';
     final location = data['location'] ?? '';
     final description = data['description'] ?? '';
+    final link = data['link'];
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: compact ? 18 : 24),
@@ -1846,27 +1871,47 @@ class _TerminalLogItem extends StatelessWidget {
                     height: 1.35,
                   ),
                   children: [
-                    TextSpan(text: role, style: TextStyle(color: colors.text)),
-                    if (company.isNotEmpty)
+                    if (company.isNotEmpty) ...[
                       TextSpan(
-                        text: ' @ $company',
-                        style: TextStyle(color: colors.accent),
-                      ),
-                    if (location.isNotEmpty && isWide)
-                      TextSpan(
-                        text: '  ·  $location',
+                        text: company,
                         style: TextStyle(
-                          color: colors.muted,
-                          fontWeight: FontWeight.w700,
+                          color: colors.text,
+                          fontWeight: FontWeight.w900,
+                          decoration: TextDecoration.underline,
+                          decorationColor: colors.accent.withValues(alpha: 0.7),
                         ),
                       ),
+                      TextSpan(
+                        text: ' — ',
+                        style: TextStyle(
+                          color: colors.muted,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      TextSpan(
+                        text: role,
+                        style: TextStyle(
+                          color: colors.accent,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ] else ...[
+                      TextSpan(
+                        text: role,
+                        style: TextStyle(color: colors.text),
+                      ),
+                    ],
                   ],
                 ),
               ),
-              if (location.isNotEmpty && !isWide) ...[
+              if (date.isNotEmpty || location.isNotEmpty) ...[
                 const SizedBox(height: 6),
                 Text(
-                  location,
+                  [
+                    if (date.isNotEmpty) date,
+                    if (location.isNotEmpty) location,
+                  ].join(' – '),
                   style: TextStyle(
                     color: colors.muted,
                     fontFamily: 'Barlow',
@@ -1877,15 +1922,44 @@ class _TerminalLogItem extends StatelessWidget {
               ],
               const SizedBox(height: 10),
               Text(
-                '> $description',
+                description,
                 style: TextStyle(
                   color: colors.muted,
                   fontFamily: 'Barlow',
                   fontSize: compact ? 14 : 15,
                   height: 1.7,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
+              if (link != null && link.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () => Launcher.open(link),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.link_rounded,
+                            size: 15, color: colors.accent),
+                        const SizedBox(width: 6),
+                        Text(
+                          'Visit $link',
+                          style: TextStyle(
+                            color: colors.accent,
+                            fontFamily: 'Barlow',
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                            decoration: TextDecoration.underline,
+                            decorationColor:
+                                colors.accent.withValues(alpha: 0.5),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ],
           );
 
@@ -2160,14 +2234,16 @@ class _ActionButton extends StatefulWidget {
   const _ActionButton({
     required this.colors,
     required this.label,
-    required this.icon,
+    this.icon,
+    this.iconBuilder,
     required this.onTap,
     this.filled = false,
   });
 
   final _PortfolioColors colors;
   final String label;
-  final IconData icon;
+  final IconData? icon;
+  final Widget Function(Color color)? iconBuilder;
   final VoidCallback onTap;
   final bool filled;
 
@@ -2185,6 +2261,12 @@ class _ActionButtonState extends State<_ActionButton> {
         : (_hovered ? widget.colors.accentSoft : Colors.transparent);
     final foreground =
         widget.filled ? widget.colors.onAccent : widget.colors.text;
+
+    final Widget leading = widget.iconBuilder != null
+        ? widget.iconBuilder!(foreground)
+        : (widget.icon != null
+            ? Icon(widget.icon, size: 19, color: foreground)
+            : const SizedBox.shrink());
 
     return MouseRegion(
       cursor: SystemMouseCursors.none,
@@ -2205,7 +2287,7 @@ class _ActionButtonState extends State<_ActionButton> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(widget.icon, size: 19, color: foreground),
+              leading,
               const SizedBox(width: 8),
               Text(
                 widget.label,
@@ -2222,6 +2304,81 @@ class _ActionButtonState extends State<_ActionButton> {
       ),
     );
   }
+}
+
+class _WhatsAppIcon extends StatelessWidget {
+  const _WhatsAppIcon({required this.color});
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 19,
+      height: 19,
+      child: CustomPaint(
+        painter: _WhatsAppPainter(color),
+      ),
+    );
+  }
+}
+
+class _WhatsAppPainter extends CustomPainter {
+  const _WhatsAppPainter(this.color);
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final scale = size.width / 24.0;
+    canvas.scale(scale, scale);
+
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    final path = Path()
+      ..moveTo(12.04, 2.0)
+      ..cubicTo(6.58, 2.0, 2.13, 6.45, 2.13, 11.91)
+      ..cubicTo(2.13, 13.66, 2.59, 15.36, 3.45, 16.86)
+      ..lineTo(2.05, 22.0)
+      ..lineTo(7.3, 20.62)
+      ..cubicTo(8.75, 21.41, 10.38, 21.83, 12.04, 21.83)
+      ..cubicTo(17.5, 21.83, 21.95, 17.38, 21.95, 11.92)
+      ..cubicTo(21.95, 9.27, 20.92, 6.78, 19.05, 4.91)
+      ..cubicTo(17.18, 3.03, 14.69, 2.0, 12.04, 2.0)
+      ..close()
+      ..moveTo(17.09, 15.54)
+      ..cubicTo(16.8, 15.4, 15.37, 14.7, 15.11, 14.6)
+      ..cubicTo(14.84, 14.51, 14.65, 14.46, 14.45, 14.75)
+      ..cubicTo(14.26, 15.04, 13.71, 15.69, 13.54, 15.89)
+      ..cubicTo(13.38, 16.08, 13.21, 16.11, 12.92, 15.96)
+      ..cubicTo(12.63, 15.82, 11.7, 15.51, 10.6, 14.53)
+      ..cubicTo(9.74, 13.76, 9.16, 12.82, 8.99, 12.53)
+      ..cubicTo(8.83, 12.24, 8.97, 12.09, 9.12, 11.94)
+      ..cubicTo(9.25, 11.81, 9.41, 11.61, 9.56, 11.45)
+      ..cubicTo(9.7, 11.28, 9.75, 11.16, 9.85, 10.97)
+      ..cubicTo(9.95, 10.77, 9.9, 10.6, 9.82, 10.46)
+      ..cubicTo(9.75, 10.31, 9.16, 8.86, 8.91, 8.27)
+      ..cubicTo(8.68, 7.7, 8.44, 7.78, 8.26, 7.77)
+      ..cubicTo(8.09, 7.76, 7.9, 7.84, 7.67, 7.84)
+      ..cubicTo(7.48, 7.84, 7.17, 7.91, 6.91, 8.2)
+      ..cubicTo(6.65, 8.48, 5.91, 9.18, 5.91, 10.6)
+      ..cubicTo(5.91, 12.02, 6.94, 13.39, 7.09, 13.58)
+      ..cubicTo(7.23, 13.78, 9.12, 16.7, 12.02, 17.95)
+      ..cubicTo(12.71, 18.25, 13.24, 18.43, 13.66, 18.56)
+      ..cubicTo(14.36, 18.78, 14.99, 18.75, 15.5, 18.68)
+      ..cubicTo(16.06, 18.59, 17.23, 17.97, 17.47, 17.28)
+      ..cubicTo(17.72, 16.6, 17.72, 16.01, 17.64, 15.89)
+      ..cubicTo(17.57, 15.76, 17.38, 15.69, 17.09, 15.54)
+      ..close();
+
+    path.fillType = PathFillType.evenOdd;
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant _WhatsAppPainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
 class _TinyChip extends StatelessWidget {
@@ -2445,7 +2602,7 @@ class _RoleLine extends StatelessWidget {
           ),
         ),
         Text(
-          '"Senior Back-End Developer"',
+          '"Senior Back-End Developer & Team Leader"',
           style: TextStyle(
             color: colors.text,
             fontFamily: 'Barlow',
@@ -3052,6 +3209,22 @@ class _CommandPaletteState extends State<_CommandPalette> {
         label: 'Switch color theme',
         icon: Icons.contrast_rounded,
         action: widget.onThemeToggle,
+      ),
+      (
+        label: 'Download CV',
+        icon: Icons.download_rounded,
+        action: () {
+          Navigator.of(context).pop();
+          Launcher.open(Content.cvUrl);
+        },
+      ),
+      (
+        label: 'Open WhatsApp',
+        icon: Icons.chat_rounded,
+        action: () {
+          Navigator.of(context).pop();
+          Launcher.open(Content.whatsappUrl);
+        },
       ),
       (
         label: 'Open GitHub',

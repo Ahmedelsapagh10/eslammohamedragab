@@ -1,8 +1,0 @@
-# Robots.txt for Eslam Mohamed Ragab Portfolio
-# Allow all search engine crawlers to crawl the portfolio website
-
-User-agent: *
-Allow: /
-
-# Direct links to sitemap
-Sitemap: https://eslam-mohamed-ragab.techno-saas.com/sitemap.xml

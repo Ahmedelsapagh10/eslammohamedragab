@@ -7,10 +7,17 @@ List<ItemModel> packages = [];
 List<ItemModel> projects = [
   ItemModel(
     name: 'RDAPP Dashboard',
-    url: 'https://malath-9yxc.onrender.com/login',
-    image: 'assets/images/eslam/rdapp.png',
+    url: 'https://rdapp.cpvarabia.com/login',
+    image: 'programming',
     description:
         'The RDAPP dashboard is designed to help ensure every project complies with the Saudi Building Code and receives the technical attention needed for high-quality inspection and compliance workflows.',
+  ),
+  ItemModel(
+    name: 'NHCI Dashboard',
+    url: 'https://nhci.rdapp.net/login',
+    image: 'assets/images/eslam/dash.jpeg',
+    description:
+        'The NHCI dashboard is designed to help nhci employes every project complies with the Saudi Building Code and receives the technical attention needed for high-quality inspection and compliance workflows.',
   ),
   ItemModel(
     name: 'EUA Client',

@@ -231,28 +231,48 @@ class _ExperienceCardState extends State<_ExperienceCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header (Role + Company)
-            Text(
-              role,
-              style: TextStyle(
-                fontSize: widget.isMobile ? 16 : 20,
-                fontWeight: FontWeight.bold,
-                color: isHovered ? AppColors.accent : AppColors.primary,
-                fontFamily: 'Barlow',
-              ),
-            ),
-            if (company.isNotEmpty) ...[
-              const SizedBox(height: 4),
+            // Header (Company — Role)
+            if (company.isNotEmpty)
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(
+                    fontFamily: 'Barlow',
+                    fontSize: widget.isMobile ? 16 : 20,
+                    fontWeight: FontWeight.bold,
+                    color: isHovered ? AppColors.accent : AppColors.primary,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: company,
+                      style: const TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const TextSpan(
+                      text: ' — ',
+                      style: TextStyle(fontWeight: FontWeight.w400),
+                    ),
+                    TextSpan(
+                      text: role,
+                      style: const TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            else
               Text(
-                company,
+                role,
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.primary.withValues(alpha: 0.8),
+                  fontSize: widget.isMobile ? 16 : 20,
+                  fontWeight: FontWeight.bold,
+                  color: isHovered ? AppColors.accent : AppColors.primary,
                   fontFamily: 'Barlow',
                 ),
               ),
-            ],
             const SizedBox(height: 16),
 
             // Metadata Badges (Date | Location)
@@ -294,11 +314,15 @@ class _ExperienceCardState extends State<_ExperienceCard> {
                 alignment: Alignment.centerLeft,
                 child: TextButton.icon(
                   onPressed: () {
-                    if (link == 'Youtube') {
+                    if (link.startsWith('http')) {
+                      Launcher.open(link);
+                    } else if (link == 'Youtube') {
                       Launcher.open(
                           'https://eslam-mohamed-ragab.techno-saas.com/');
                     } else if (link == 'GDSC') {
                       Launcher.open('https://gdsc.community.dev/');
+                    } else {
+                      Launcher.open(link);
                     }
                   },
                   icon: const Icon(Icons.link, size: 20),
