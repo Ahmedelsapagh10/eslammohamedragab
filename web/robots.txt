@@ -1,0 +1,8 @@
+# Robots.txt for Ahmed Elsapagh Portfolio
+# Allow all search engine crawlers to crawl the portfolio website
+
+User-agent: *
+Allow: /
+
+# Direct links to sitemap
+Sitemap: https://elsapagh.octopusteam.net/sitemap.xml

@@ -1,13 +1,14 @@
 {
-    "name": "X STORE",
-    "short_name": "X STORE",
+    "name": "Ahmed Elsapagh | Senior Flutter Developer",
+    "short_name": "Ahmed Elsapagh",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#F5F7FE",
-    "theme_color": "#31538E",
-    "description": "A new Flutter project.",
+    "background_color": "#1E1E1E",
+    "theme_color": "#1E1E1E",
+    "description": "Portfolio of Ahmed Elsapagh (احمد الصباغ), a Senior Flutter Developer specialized in Clean Architecture, Cubit, and Cross-Platform Apps.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
+    "categories": ["portfolio", "developer", "business"],
     "icons": [
         {
             "src": "icons/Icon-192.png",

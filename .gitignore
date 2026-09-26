@@ -1,3 +1,5 @@
+# Large Assets
+# assets/quran/quran.pdf
 # Miscellaneous
 *.class
 *.log
@@ -11,7 +13,6 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
-CLAUDE.local.md
 
 # IntelliJ related
 *.iml
@@ -28,11 +29,13 @@ CLAUDE.local.md
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
-.flutter-plugins
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
+/build/*
+!/build/web/
+!/build/web/**
+/coverage/
 
 # Symbolication related
 app.*.symbols
@@ -44,3 +47,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# FVM Version Cache
+.fvm/
